@@ -208,5 +208,6 @@ The third recommendation given by the BM25 approach does not seem correct to me.
 The recommendations given by BERT seem very natural and logical to me, you can notice the absence of the words mentioned in point 1, here you can see that the recommendations are based on the semantics of the text and not only on the frequency of the words.
 To conclude, vectorization techniques that generate dense vectors are more robust and more sensitive to detecting natural language.
 I am a beginner in the world of NLP, and the best way to understand theoretical concepts is learning by doing, you can ask for modifications.
-image
+![image](https://github.com/kagapuadityavardhan/MOVIE-RECOMENDATION-SYSTEMS/assets/138205831/aba448a3-a624-429b-8ef2-be24a66ad94f)
+
 
