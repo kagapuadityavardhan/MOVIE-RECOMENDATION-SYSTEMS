@@ -2,7 +2,8 @@
 Check the article here: Building an Amazon Prime content-based Movie Recommender System
 The aim of this article is to show you how to quickly create a content-based recommendation system. When you select a movie on platforms such as Amazon Prime or Netflix you may also notice that they will always show you similar movies that may be to your liking, this document shows , explains and implements three approaches to calculate those similarities using the description of each movie, the approaches are the following:
 
-image
+
+![image](https://github.com/kagapuadityavardhan/MOVIE-RECOMENDATION-SYSTEMS/assets/138205831/12b38892-6b95-4475-8508-1ed7d4d65350)
 
 TF-IDF and Cosine Similarity
 TF-IDF (term frequency-inverse document frequency) is a traditional count-based feature engineering strategy for textual data which is part of the Bag of words model, Despite is very effective for extract features from text, it is losing additional information like semantics and the context around the text. Once the raw corpus is processed by the TF-IDF, we will calculate the similarities of pairwise document using cosine similarity metric, the result of the last step is the information that the recommender needs.
@@ -12,9 +13,11 @@ It is an improved version of TF-IDF, it will give you better relevance in the si
 
 TF-IDF in RED, the frequency of the words will influence the score
 BM25 in BLUE, will limit the influence of the frequency of words
-image
+![image](https://github.com/kagapuadityavardhan/MOVIE-RECOMENDATION-SYSTEMS/assets/138205831/7e9994d6-46d6-459c-a90c-8ea9b347344b)
 
-image
+
+![image](https://github.com/kagapuadityavardhan/MOVIE-RECOMENDATION-SYSTEMS/assets/138205831/a4f24252-6b87-479b-b380-a523fec3d256)
+
 
 BERT
 This technique is represented by dense vectors, this means that the values of the weights matrix will have more values associated in their columns for each document, therefore, much more information in it. Internally BERT is using many encoding layers to be able to generate the dense vector, which leads to a more meaningful understanding of the text and the semantics on it. The second step in this approach is to calculate the similarities of pairwise document using cosine similarity, the result of the last step is the information that the recommender needs.
@@ -121,14 +124,16 @@ mr = MovieRecommender('archive.zip', ['Movie Name', 'Plot'], 'Movie Name', 'Plot
 df = mr.process()
 mr.show_df_records(5)
 
-image
+![image](https://github.com/kagapuadityavardhan/MOVIE-RECOMENDATION-SYSTEMS/assets/138205831/7facb3d7-bbae-4d92-9c14-70e00e5e9ffe)
+
 
 The method get_normalized_corpus is cleaning the text and removing stopwords, if you pass the parameter True, it will return an array of words for each sentence.
 
 norm_corpus = mr.get_normalized_corpus()
 norm_corpus[:3]
 
-image
+![image](https://github.com/kagapuadityavardhan/MOVIE-RECOMENDATION-SYSTEMS/assets/138205831/2b27cb1f-fce4-4000-bed7-e44b21ef44f8)
+
 
 The method get_features, is vectorizing the documents, converting the words to numerical values and taking into account the frequency of each word, it is applying TF-IDF
 
@@ -141,7 +146,8 @@ The method get_vector_cosine is returning the cosine similarity for Pairwise doc
 vector_cosine = mr.get_vector_cosine(tfidf_array)
 vector_cosine.head()
 
-image
+![image](https://github.com/kagapuadityavardhan/MOVIE-RECOMENDATION-SYSTEMS/assets/138205831/eeec1bb8-a1c1-4f1a-92ef-6c227001e2f6)
+
 
 This is an additional method which is useful to search options for experiments, in this case i searched “Batman” and it returns options and their ids.
 
@@ -158,29 +164,33 @@ This is for search and check the description of movies:
 
 df[df['Movie Name'] == 'Pratibad' ].values
 
-image
+![image](https://github.com/kagapuadityavardhan/MOVIE-RECOMENDATION-SYSTEMS/assets/138205831/ca32e52e-8f66-4045-9342-a45c98dff77e)
+
 
 df[df['Movie Name'] == 'Bhagat Singh Ki Udeek' ].values
 
-image
+![image](https://github.com/kagapuadityavardhan/MOVIE-RECOMENDATION-SYSTEMS/assets/138205831/ae472436-fd1c-4b8f-966e-109184479dd5)
+
 
 df[df['Movie Name'] == 'Batman Begins' ].values
 
-image
+![image](https://github.com/kagapuadityavardhan/MOVIE-RECOMENDATION-SYSTEMS/assets/138205831/855d771a-0d5e-4655-80a1-f796349ba7a1)
+
 
 BM25
 BM25 es expecting receive the documents as a tokens
 
 norm_corpus_tokens = mr.get_normalized_corpus(True)
 norm_corpus_tokens[:3]
+![image](https://github.com/kagapuadityavardhan/MOVIE-RECOMENDATION-SYSTEMS/assets/138205831/8678542b-024f-4492-8189-81cb6849e205)
 
-image
 
 wts = mr.get_bm25_weights(norm_corpus_tokens)
 bm25_wts_df = pd.DataFrame(wts)
 bm25_wts_df.head()
 
-image
+![image](https://github.com/kagapuadityavardhan/MOVIE-RECOMENDATION-SYSTEMS/assets/138205831/2f90411b-1bb0-487a-aa0f-9b7ac15c2f3d)
+
 
 movies_recommended  = mr.recommendation(5560, bm25_wts_df, 3)
 print(movies_recommended)
@@ -196,7 +206,8 @@ print(movies_recommended)
 
 df[df['Movie Name'] == 'Dune' ].values
 
-image
+![image](https://github.com/kagapuadityavardhan/MOVIE-RECOMENDATION-SYSTEMS/assets/138205831/53af60ba-e8bd-421a-9631-3d3b544174a5)
+
 
 Summary
 Batman Begins
